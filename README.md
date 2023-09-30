@@ -1,1 +1,1 @@
-Datatables Extensions Examples Using Package **laravel-components**
+**Datatables Extensions Examples Using Package _laravel-components_**
