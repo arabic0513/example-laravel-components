@@ -1,6 +1,5 @@
 <?php
 
-use App\DataTables\UsersDatatablesEditor;
 use App\Http\Controllers\EimzoController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UppyController;
@@ -17,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::controller(ReportController::class)->group(function() {
     Route::get('/yajra/{name}', 'view')->name('yajra');
@@ -39,5 +39,3 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Auth::routes();
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

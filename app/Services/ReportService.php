@@ -21,14 +21,7 @@ class ReportService
     public function report(): JsonResponse
     {
         $query = User::query();
-        return Datatables::of($query)
-            ->addColumn('DT_RowId', function($data){
-                return ['pkey' => $data->id];
-            })
-            ->addColumn('DT_RowData', function($data){
-                return 'row_'.$data->id;
-            })
-            ->make();
+        return Datatables::of($query)->make();
     }
     /**
      * Get All Branch
