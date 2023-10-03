@@ -1,4 +1,4 @@
-# Datatables Extensions Examples Using Package _laravel-components_
+# Datatables Extensions Examples Using My Package [_laravel-components_](https://packagist.org/packages/teamprodev/laravel-components)
 
 ## [Datatables](https://datatables.net/)
 
