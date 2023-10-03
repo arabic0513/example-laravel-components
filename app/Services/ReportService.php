@@ -21,7 +21,12 @@ class ReportService
     public function report(): JsonResponse
     {
         $query = User::query();
-        return Datatables::of($query)->make();
+        if (request('branch_id')) {
+            $query->where('branch_id', request('branch_id'));
+        }
+        return Datatables::of($query)
+            ->setRowId('id')
+            ->make();
     }
     /**
      * Get All Branch
@@ -33,6 +38,9 @@ class ReportService
     {
         $query = Branch::query();
         return Datatables::of($query)
+            ->addColumn('users', function ($branch){
+                return User::where('branch_id',$branch->id)->count();
+            })
             ->make();
     }
 }

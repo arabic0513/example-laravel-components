@@ -96,6 +96,14 @@ class One extends DefaultValueBinder implements WithStyles, FromCollection, With
                     'rowspan' => 0,
                     'colspan' => 0,
                 ],
+                __('Branch ID') => [
+                    'rowspan' => 0,
+                    'colspan' => 0,
+                ],
+                __('Updated At') => [
+                    'rowspan' => 0,
+                    'colspan' => 0,
+                ],
             ],
         ];
     }
@@ -111,6 +119,8 @@ class One extends DefaultValueBinder implements WithStyles, FromCollection, With
             ['data' => 'id', 'name' => 'id'],
             ['data' => 'name', 'name' => 'name'],
             ['data' => 'email', 'name' => 'email'],
+            ['data' => 'branch_id', 'name' => 'branch_id'],
+            ['data' => 'updated_at', 'name' => 'updated_at'],
         ];
     }
 

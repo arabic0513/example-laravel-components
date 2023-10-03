@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel DataTables Editor</title>
+    @bukStyles(true)
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.0/css/buttons.bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.4/css/select.bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/searchbuilder/1.4.0/css/searchBuilder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
     <link rel="stylesheet" href="/css/editor.dataTables.css">
     <link rel="stylesheet" href="/css/editor.bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
@@ -24,11 +22,20 @@
         $buttons = "[
                     { extend: 'create', editor: editor },
                     { extend: 'edit', editor: editor },
+                    {
+                        extend: 'selected',
+                        text: 'Duplicate',
+                        action: function (e, dt, node, config) {
+                            editor.edit(table.rows({ selected: true }).indexes(), {
+                                    title: 'Duplicate record',
+                                    buttons: 'Create from existing'
+                                }).mode('create');
+                        }
+                    },
                     { extend: 'remove', editor: editor }
                 ]";
     @endphp
-    {{$dataTable->table(['id' => 'users'])}}
-    {{--<x-SmartsTable tableId="dataTableBuilder" select="true" :options="['buttons' => $buttons]" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>--}}
+    <x-SmartsTable tableId="users" select="true" dom="Bfrtip" :options="['buttons' => $buttons]" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -37,8 +44,7 @@
 <script src="https://cdn.datatables.net/searchbuilder/1.4.0/js/dataTables.searchBuilder.min.js"></script>
 <script src="{{asset('js/dataTables.editor.js')}}"></script>
 <script src="{{asset('js/editor.bootstrap.min.js')}}"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.0/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.0/js/buttons.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
 <script src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
 <script>
@@ -52,44 +58,17 @@
             url: "/post",
             type: "POST",
         },
-
         table: "#users",
         fields: [
             {label: "Name:", name: "name"},
-            {label: "Password:", name: "password"},
-            {
-                label: 'Show options:',
-                name: 'options',
-                type: 'select',
-                options: ['Simple', 'All'],
-                def: 'Simple',
-            },
+            {label: "Password:", name: "password",type: "password"},
             {label: "Email:", name: "email"},
-            {
-                label: "Updated At:",
-                name: "updated_at",
-                type: 'datetime',
-                def: function () {
-                    return new Date();
-                },
-                format: 'YYYY-MM-DD h:mm A',
-                fieldInfo: 'US style m-d-y date input with 12 hour clock',
-                opts: {
-                    minutesIncrement: 5
-                }
-            },
         ]
-    });
-    editor.dependent('options', function (val) {
-        return val === 'Simple'
-            ? { hide: ['email','updated_at'] }
-            : { show: ['email','updated_at'] };
     });
 
     $('#users').on('click', 'tbody td:not(:first-child)', function (e) {
         editor.inline(this);
     });
-    var table = {{$dataTable->generateScripts()}};
 </script>
 </body>
 </html>

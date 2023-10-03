@@ -579,6 +579,10 @@ return [
                             'url'  => "editor/editor.nested"
                         ],
                         [
+                            'text' => 'Parent child editor',
+                            'url'  => "editor/editor.parentChild"
+                        ],
+                        [
                             'text' => 'REST interface',
                             'url'  => "editor/editor.REST"
                         ],

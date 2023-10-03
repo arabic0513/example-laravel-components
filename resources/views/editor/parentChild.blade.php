@@ -23,8 +23,44 @@
                     { extend: 'edit', editor: editor },
                     { extend: 'remove', editor: editor }
                 ]";
+        $report = route('report');
+        $ajax = "{
+        url: '$report',
+        type: 'post',
+        data: function (d) {
+            var selected = siteTable.row({ selected: true });
+            if (selected.any()) {
+                d.branch_id = selected.data().id;
+            }
+        }
+    }";
+        $fn = "siteTable.on('select', function (e) {
+            table.ajax.reload();
+
+            editor.field('branch_id').def(siteTable.row({ selected: true }).data().id);
+        });
+
+        siteTable.on('deselect', function () {
+            table.ajax.reload();
+        });
+
+        editor.on('submitSuccess', function () {
+            siteTable.ajax.reload();
+        });
+
+        siteEditor.on('submitSuccess', function () {
+            table.ajax.reload();
+        });";
     @endphp
-    <x-SmartsTable tableId="users" select="true" :options="['buttons' => $buttons]" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    <table id="sites" class="display">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Users</th>
+        </tr>
+        </thead>
+    </table>
+    <x-SmartsTable tableId="users" :fn="[$fn]" select="true" :options="['buttons' => $buttons,'ajax' => $ajax]" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -43,23 +79,50 @@
             'X-CSRF-TOKEN': '{{csrf_token()}}'
         }
     });
+    const siteEditor = new DataTable.Editor({
+        ajax: '/post',
+        fields: [
+            {
+                label: 'Site name:',
+                name: 'name'
+            }
+        ],
+        table: '#sites'
+    });
+
+    const siteTable = $('#sites').DataTable({
+        ajax: "{{ route('branch') }}",
+        buttons: [
+            { extend: 'create', editor: siteEditor },
+            { extend: 'edit', editor: siteEditor },
+            { extend: 'remove', editor: siteEditor }
+        ],
+        columns: [
+            { data: 'id' },
+            { data: 'users'}
+        ],
+        dom: 'Bfrtip',
+        select: {
+            style: 'single'
+        }
+    });
     var editor = new $.fn.dataTable.Editor({
         ajax: {
             url: "/post",
+            data: function (d) {
+                var selected = siteTable.row({ selected: true });
+                if (selected.any()) {
+                    d.site = selected.data().id;
+                }
+            },
             type: "POST",
         },
 
         table: "#users",
         fields: [
             {label: "Name:", name: "name"},
-            {
-                label: 'Show options:',
-                name: 'options',
-                type: 'select',
-                options: ['Simple', 'All'],
-                def: 'Simple',
-            },
             {label: "Email:", name: "email"},
+            {label: "Branch ID:", name: "branch_id"},
             {
                 label: "Updated At:",
                 name: "updated_at",
@@ -74,15 +137,6 @@
                 }
             },
         ]
-    });
-    editor.dependent('options', function (val) {
-        return val === 'Simple'
-            ? { hide: ['email','updated_at'] }
-            : { show: ['email','updated_at'] };
-    });
-
-    $('#users').on('click', 'tbody td:not(:first-child)', function (e) {
-        editor.inline(this);
     });
 </script>
 </body>
