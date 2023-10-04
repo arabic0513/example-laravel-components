@@ -9,11 +9,6 @@
     <x-SmartsTable tableId="report" :addEventListener="['#enable' => '`click`, function () {table.fixedHeader.enable();}','#disable' => '`click`, function () {table.fixedHeader.disable();}']" :options="['fixedHeader' => 'true']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 @stop
 @section('css')
-    <style>
-        thead input {
-            width: 100%;
-        }
-    </style>
     @bukStyles(true)
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 @stop
