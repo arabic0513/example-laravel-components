@@ -17,6 +17,7 @@
 </head>
 <body>
 <div class="container">
+    <a href="/" type="button" class="btn btn-primary">Back</a>
     @php
         $buttons = "[
                     { extend: 'create', editor: editor },
