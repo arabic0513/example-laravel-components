@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.css" rel="stylesheet">
     <title>Example App</title>
-    @bukStyles
+    @bukStyles(true)
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
@@ -23,13 +23,12 @@
     </style>
 </head>
 <body>
-<aside class="main-sidebar sidebar-dark-primary elevation-4 layout-fixed">
-    @include('dashboard.sidebar')
-</aside>
-@bukScripts
-<div class="content-wrapper">
+@bukScripts(true)
     <div class="content">
         <section class="bg-blueGray-50">
+            <a href="/" type="button" class="hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                Back
+            </a>
             <div class="w-full h-full flex items-center justify-center" style="height: 86vh;">
                 <div class="bg-white w-11/12 mx-auto rounded shadow-lg z-50 overflow-y-auto" style="background-color: #0b2e13; max-width: 40%;max-height: 80%;">
                     <div style="height: 25em;
@@ -61,7 +60,6 @@
             </div>
         </section>
     </div>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 </body>
 </html>
