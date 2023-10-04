@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -366,6 +366,67 @@ return [
                             'url'  => "yajra/colreorder.scrollingtable"
                         ]
 
+                    ]
+                ],
+                [
+                    'text' => 'Editor',
+                    'submenu' => [
+                        [
+                            'text' => 'Client-side validation',
+                            'url'  => "editor/editor.clientvalidation"
+                        ],
+                        [
+                            'text' => 'DataTable as a single select',
+                            'url'  => "editor/editor.select"
+                        ],
+                        [
+                            'text' => 'Date and time input',
+                            'url'  => "editor/editor.datetime"
+                        ],
+                        [
+                            'text' => 'Dependent fields',
+                            'url'  => "editor/editor.dependentFields"
+                        ],
+                        [
+                            'text' => 'Duplicate button',
+                            'url'  => "editor/editor.duplicateButton"
+                        ],
+                        [
+                            'text' => 'Editing options - submit on blur',
+                            'url'  => "editor/editor.options"
+                        ],
+                        [
+                            'text' => 'File upload (many)',
+                            'url'  => "editor/editor.upload-many"
+                        ],
+                        [
+                            'text' => 'In table form controls',
+                            'url'  => "editor/editor.inTableControls"
+                        ],
+                        [
+                            'text' => 'Join tables - self referencing join',
+                            'url'  => "editor/editor.joinSelf"
+                        ],
+                        [
+                            'text' => 'Multi-item editing (rows, columns, cells)',
+                            'url'  => "editor/editor.multiItem"
+                        ],
+                        [
+                            'text' => 'Nested editing',
+                            'url'  => "editor/editor.nested"
+                        ],
+                        [
+                            'text' => 'Parent child editor',
+                            'url'  => "editor/editor.parentChild"
+                        ],
+                        [
+                            'text' => 'REST interface',
+                            'url'  => "editor/editor.REST"
+                        ],
+                        [
+                            'text' => 'Whole row - icon controls',
+                            'url'  => "editor/editor.fullRow"
+                        ],
                     ]
                 ],
                 [
@@ -528,67 +589,6 @@ return [
                         [
                             'text' => 'Remove All Button',
                             'url'  => "yajra/staterestore.removeallbutton"
-                        ],
-                    ]
-                ],
-                [
-                    'text' => 'Editor',
-                    'submenu' => [
-                        [
-                            'text' => 'Client-side validation',
-                            'url'  => "editor/editor.clientvalidation"
-                        ],
-                        [
-                            'text' => 'DataTable as a single select',
-                            'url'  => "editor/editor.select"
-                        ],
-                        [
-                            'text' => 'Date and time input',
-                            'url'  => "editor/editor.datetime"
-                        ],
-                        [
-                            'text' => 'Dependent fields',
-                            'url'  => "editor/editor.dependentFields"
-                        ],
-                        [
-                            'text' => 'Duplicate button',
-                            'url'  => "editor/editor.duplicateButton"
-                        ],
-                        [
-                            'text' => 'Editing options - submit on blur',
-                            'url'  => "editor/editor.options"
-                        ],
-                        [
-                            'text' => 'File upload (many)',
-                            'url'  => "editor/editor.upload-many"
-                        ],
-                        [
-                            'text' => 'In table form controls',
-                            'url'  => "editor/editor.inTableControls"
-                        ],
-                        [
-                            'text' => 'Join tables - self referencing join',
-                            'url'  => "editor/editor.joinSelf"
-                        ],
-                        [
-                            'text' => 'Multi-item editing (rows, columns, cells)',
-                            'url'  => "editor/editor.multiItem"
-                        ],
-                        [
-                            'text' => 'Nested editing',
-                            'url'  => "editor/editor.nested"
-                        ],
-                        [
-                            'text' => 'Parent child editor',
-                            'url'  => "editor/editor.parentChild"
-                        ],
-                        [
-                            'text' => 'REST interface',
-                            'url'  => "editor/editor.REST"
-                        ],
-                        [
-                            'text' => 'Whole row - icon controls',
-                            'url'  => "editor/editor.fullRow"
                         ],
                     ]
                 ],
