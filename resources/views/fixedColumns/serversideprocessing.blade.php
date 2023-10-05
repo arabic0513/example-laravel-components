@@ -5,6 +5,7 @@
 @stop
 @section('content')
     <x-SmartsTable tableId="report" serverSide="true" scrollY="300" scrollX="true" :options="['fixedColumns' => 'true','scrollCollapse' => 'true']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    <x-SmartsTable tableId="report1" serverSide="true" scrollY="300" scrollX="true" :options="['fixedColumns' => 'true','scrollCollapse' => 'true']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 @stop
 @section('css')
     <style>

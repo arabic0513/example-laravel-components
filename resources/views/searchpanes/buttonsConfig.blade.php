@@ -12,6 +12,14 @@
                 }
             }
         ]']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    <x-SmartsTable tableId="report1" dom="Bfrtip" :options="['buttons' => '[
+            {
+                extend: `searchPanes`,
+                config: {
+                    cascadePanes: true
+                }
+            }
+        ]']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 @stop
 @section('css')
     @bukStyles(true)

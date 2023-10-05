@@ -19,6 +19,21 @@
             }
         ]']" :objects="['$.fn.dataTable.ext.buttons.alert' => '{className: `buttons-alert`,action: function ( e, dt, node, config ) {alert( this.text() );}}'
         ]" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    <x-SmartsTable tableId="report1" dom="Bfrtip" :options="['buttons' => '[
+            {
+                extend: `alert`,
+                text: `My button 1`
+            },
+            {
+                extend: `alert`,
+                text: `My button 2`
+            },
+            {
+                extend: `alert`,
+                text: `My button 3`
+            }
+        ]']" :objects="['$.fn.dataTable.ext.buttons.alert' => '{className: `buttons-alert`,action: function ( e, dt, node, config ) {alert( this.text() );}}'
+        ]" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 @stop
 @section('css')
 

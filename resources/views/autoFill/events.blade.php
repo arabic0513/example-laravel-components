@@ -5,7 +5,9 @@
 @stop
 @section('content')
     <x-SmartsTable tableId="report" :options="['autoFill' => true]" :events="['autoFill' => 'function () {
-    table.columns.adjust();}']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    report.columns.adjust();}']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    <x-SmartsTable tableId="report1" :options="['autoFill' => true]" :events="['autoFill' => 'function () {
+    report1.columns.adjust();}']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 @stop
 @section('css')
 

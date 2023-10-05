@@ -5,6 +5,7 @@
 @stop
 @section('content')
     <x-SmartsTable tableId="report" dom="Bfrtip" :options="['buttons' => '[{extend: `collection`,text: `Table control`,buttons: [{text: `Toggle start date`,action: function ( e, dt, node, config ) {dt.column( -2 ).visible( ! dt.column( -2 ).visible() );}},{text: `Toggle salary`,action: function ( e, dt, node, config ) {dt.column( -1 ).visible( ! dt.column( -1 ).visible() );}},{popoverTitle: `Visibility control`,extend: `colvis`,collectionLayout: `two-column`}]}]']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    <x-SmartsTable tableId="report1" dom="Bfrtip" :options="['buttons' => '[{extend: `collection`,text: `Table control`,buttons: [{text: `Toggle start date`,action: function ( e, dt, node, config ) {dt.column( -2 ).visible( ! dt.column( -2 ).visible() );}},{text: `Toggle salary`,action: function ( e, dt, node, config ) {dt.column( -1 ).visible( ! dt.column( -1 ).visible() );}},{popoverTitle: `Visibility control`,extend: `colvis`,collectionLayout: `two-column`}]}]']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 @stop
 @section('css')
 

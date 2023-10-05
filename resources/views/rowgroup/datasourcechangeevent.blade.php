@@ -12,10 +12,10 @@
             <a class="group-by" data-column="1">Group by Name</a>
         </li>
         <li>
-            <a class="group-by" data-column="2">Group by Role ID</a>
+            <a class="group-by" data-column="2">Group by Email</a>
         </li>
         <li>
-            <a class="group-by" data-column="3">Group by Email</a>
+            <a class="group-by" data-column="3">Group by Branch ID</a>
         </li>
     </ul>
     <x-SmartsTable tableId="report" rowGroup="{dataSrc: 'role_id'}" :querySelectorAll="['a.group-by' => 'forEach(el => {
@@ -23,11 +23,36 @@
                 e.preventDefault();
 
                 let dataColumn = e.target.getAttribute(`data-column`);
-                table.rowGroup().dataSrc(dataColumn);
+                report.rowGroup().dataSrc(dataColumn);
 
             })
         })']" :events="['rowgroup-datasrc' => 'function (e, dt, val) {
-    table.order.fixed({ pre: [[val, `asc`]] }).draw();
+    report.order.fixed({ pre: [[val, `asc`]] }).draw();
+}']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    <ul>
+        <li>
+            <a class="group-by1" data-column="0">Group by ID</a>
+        </li>
+        <li>
+            <a class="group-by1" data-column="1">Group by Name</a>
+        </li>
+        <li>
+            <a class="group-by1" data-column="2">Group by Email</a>
+        </li>
+        <li>
+            <a class="group-by1" data-column="3">Group by Branch ID</a>
+        </li>
+    </ul>
+    <x-SmartsTable tableId="report1" rowGroup="{dataSrc: 'role_id'}" :querySelectorAll="['a.group-by1' => 'forEach(el => {
+            el.addEventListener(`click`, e => {
+                e.preventDefault();
+
+                let dataColumn = e.target.getAttribute(`data-column`);
+                report1.rowGroup().dataSrc(dataColumn);
+
+            })
+        })']" :events="['rowgroup-datasrc' => 'function (e, dt, val) {
+    report1.order.fixed({ pre: [[val, `asc`]] }).draw();
 }']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 @stop
 @section('css')

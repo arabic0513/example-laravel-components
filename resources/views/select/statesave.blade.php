@@ -5,6 +5,7 @@
 @stop
 @section('content')
     <x-SmartsTable tableId="report" select="true" stateSave="true" :options="['rowId' => '`id`']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    <x-SmartsTable tableId="report1" select="true" stateSave="true" :options="['rowId' => '`id`']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 @stop
 @section('css')
     @bukStyles(true)

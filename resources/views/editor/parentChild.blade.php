@@ -36,13 +36,13 @@
         }
     }";
         $fn = "siteTable.on('select', function (e) {
-            table.ajax.reload();
+            users.ajax.reload();
 
             editor.field('branch_id').def(siteTable.row({ selected: true }).data().id);
         });
 
         siteTable.on('deselect', function () {
-            table.ajax.reload();
+            users.ajax.reload();
         });
 
         editor.on('submitSuccess', function () {
@@ -50,7 +50,7 @@
         });
 
         siteEditor.on('submitSuccess', function () {
-            table.ajax.reload();
+            users.ajax.reload();
         });";
     @endphp
     <table id="sites" class="display">

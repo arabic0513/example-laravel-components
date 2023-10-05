@@ -10,6 +10,12 @@
     td.textContent = content;
 
     tr.appendChild(td);']]" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    <x-SmartsTable tableId="report1" rowGroup="{dataSrc: 'branch_id'}" :functions="['addCell' => ['parameters' => 'tr, content, colSpan = 1','value' => 'let td = document.createElement(`th`);
+
+    td.colSpan = colSpan;
+    td.textContent = content;
+
+    tr.appendChild(td);']]" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 @stop
 @section('css')
     @bukStyles(true)

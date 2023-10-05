@@ -27,7 +27,7 @@
                         extend: 'selected',
                         text: 'Duplicate',
                         action: function (e, dt, node, config) {
-                            editor.edit(table.rows({ selected: true }).indexes(), {
+                            editor.edit(users.rows({ selected: true }).indexes(), {
                                     title: 'Duplicate record',
                                     buttons: 'Create from existing'
                                 }).mode('create');
@@ -37,6 +37,7 @@
                 ]";
     @endphp
     <x-SmartsTable tableId="users" select="true" dom="Bfrtip" :options="['buttons' => $buttons]" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    <x-SmartsTable tableId="users1" select="true" dom="Bfrtip" :options="['buttons' => $buttons]" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>

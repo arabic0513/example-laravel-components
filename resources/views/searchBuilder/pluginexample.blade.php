@@ -109,6 +109,7 @@
     }";
     @endphp
     <x-SmartsTable tableId="report" dom="Qfrtip" :fn="[$fn1]" :options="['columnDefs' => '[{type: `role_id`, targets: 2}]']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
+    <x-SmartsTable tableId="report1" dom="Qfrtip" :fn="[$fn1]" :options="['columnDefs' => '[{type: `role_id`, targets: 2}]']" getData="{{ route('report') }}" exportId="{{\App\Reports\One::class}}" startDate="{{request()->input('startDate')}}" endDate="{{request()->input('endDate')}}"></x-SmartsTable>
 @stop
 @section('css')
     @bukStyles(true)
